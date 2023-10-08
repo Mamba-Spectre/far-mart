@@ -1,13 +1,14 @@
 "use client";
-import React, { useState } from 'react'
+import React, { useState } from "react";
 import axios from "axios";
-import s from "./Upload.module.scss";
-import { useAccessToken } from '@/hooks/GlobalContext';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useAccessToken } from "@/hooks/GlobalContext";
 import { useRouter } from "next/navigation";
+import "./upload.scss";
 
-export default function Upload({onUploadComplete}) {
+export default function Upload({ onUploadComplete }) {
   const [selectedFile, setSelectedFile] = useState(null);
-  const {accessToken} = useAccessToken();
+  const { accessToken } = useAccessToken();
 
   const Router = useRouter();
   const handleFileUpload = (event) => {
@@ -34,11 +35,10 @@ export default function Upload({onUploadComplete}) {
       if (response.status === 401) {
         Router.push("/login");
       }
-      if (response.status===200) {
+      if (response.status === 200) {
         setSelectedFile(null);
-        await onUploadComplete()
+        await onUploadComplete();
       }
-      
     } catch (error) {
       console.error(error);
     }
@@ -46,14 +46,15 @@ export default function Upload({onUploadComplete}) {
 
   return (
     <>
-    <div className={s.root}>
-      <div className={s.Container}>
-        <h1>File Uploader</h1>
-        <input type="file" onChange={handleFileUpload} />
-        <button onClick={handleUpload}>Upload File</button>
+      <div className="file-card">
+        <p className="header">Upload File</p>
+        <div className="file-inputs">
+          <input className="input" type="file" onChange={handleFileUpload} />
+          <button className="button" onClick={handleUpload}>
+            Upload
+          </button>
+        </div>
       </div>
-    </div>
     </>
   );
 }
-

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
 import Upload from "@/components/Upload/Upload";
+import "./home.css";
 
 const Home = () => {
   const [files, setFiles] = useState([]);
@@ -65,18 +66,26 @@ const Home = () => {
   };
 
   return (
-    <div>
-      <h1>Home</h1>
+    <div className="App">
       <div>
         <Upload onUploadComplete={fetchFiles} />
       </div>
-      <div>
+      <div className="data">
         {files.map((file) => (
           <div key={file._id}>
             <span title={file?.Key.slice(8)}>{file?.Key.slice(45)}</span>
-            <button onClick={() => handleDownload(file?._id)}>Download</button>
-            <button onClick={() => shareLink(file?._id)}>Share</button>
-            <button onClick={() => handleDelete(file?._id)}>Delete</button>
+            <button
+              className="button"
+              onClick={() => handleDownload(file?._id)}
+            >
+              Download
+            </button>
+            <button className="button" onClick={() => shareLink(file?._id)}>
+              Share
+            </button>
+            <button className="button" onClick={() => handleDelete(file?._id)}>
+              Delete
+            </button>
           </div>
         ))}
       </div>

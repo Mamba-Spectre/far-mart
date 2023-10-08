@@ -1,0 +1,42 @@
+.file-card {
+  //   display: flex;
+  //   flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 200px;
+  width: 600px;
+  background: #fff;
+  padding-bottom: 30px;
+  border-radius: 12px;
+  align-items: center;
+  .header {
+    color: #3c009d;
+    font-size: 48px;
+    font-weight: 700;
+    margin-left: 20px;
+  }
+  .file-inputs {
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    gap: 50px;
+    .input {
+      margin-top: 10px;
+    }
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 220px;
+      height: 59px;
+      color: #fff;
+      background: #4c00b4;
+      border-radius: 50px;
+      font-size: 19px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  }
+}
