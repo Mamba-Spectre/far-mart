@@ -15,6 +15,9 @@ const Home = () => {
   }, [accessToken]);
 
   const fetchFiles = async () => {
+    if (!accessToken) {
+      Router.push("/login");
+    }
     const response = await fetch("https://farmart-be.onrender.com/api/files", {
       headers: {
         Authorization: accessToken,
