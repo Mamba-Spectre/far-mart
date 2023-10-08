@@ -49,6 +49,7 @@ const SignupPage = () => {
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="input">
@@ -58,12 +59,14 @@ const SignupPage = () => {
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
       </div>
       <div className="submit-container">
         {/* <div className="submit">Sign Up</div> */}
         <button
+          disabled={!email || !password || !name}
           className="submit"
           onClick={async () => {
             await handleSignup();

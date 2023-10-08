@@ -46,6 +46,7 @@ const LoginPage = () => {
             placeholder="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
           />
         </div>
         <div className="input">
@@ -55,17 +56,28 @@ const LoginPage = () => {
             placeholder="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
           />
         </div>
       </div>
       <div className="submit-container">
         <button
+          disabled={!email || !password}
           className="submit"
           onClick={async () => {
             await handleLogin();
           }}
         >
           Login
+        </button>
+        <button
+          // disabled={!email || !password}
+          className="submit"
+          onClick={async () => {
+            router.push("/signup");
+          }}
+        >
+          Sign Up
         </button>
       </div>
     </div>
