@@ -16,6 +16,10 @@ const LoginPage = () => {
   const { setAccessToken } = useAccessToken();
 
   const handleLogin = async () => {
+    if (!email || !password) {
+      setError("Please fill in both email and password fields.");
+      return;
+    }
     setloading(!loading);
     const response = await fetch(
       "https://farmart-be.onrender.com/api/users/login",
@@ -31,6 +35,9 @@ const LoginPage = () => {
       const { token } = await response.json();
       setAccessToken(token);
       router.push("/home");
+    } else {
+      const data = await response.json();
+      setError(data.error); // Set error message from response
     }
     setloading(!loading);
   };
