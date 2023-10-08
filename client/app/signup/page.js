@@ -9,9 +9,11 @@ const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setloading] = useState(false);
   const router = useRouter();
 
   const handleSignup = async () => {
+    setloading(!loading);
     const response = await fetch(
       "https://farmart-be.onrender.com/api/users/register",
       {
@@ -25,6 +27,7 @@ const SignupPage = () => {
     if (response?.ok) {
       router.push("/login");
     }
+    setloading(!loading);
   };
   return (
     <div className="container">
@@ -66,7 +69,7 @@ const SignupPage = () => {
       <div className="submit-container">
         {/* <div className="submit">Sign Up</div> */}
         <button
-          disabled={!email || !password || !name}
+          disabled={!email || !password || !name || loading}
           className="submit"
           onClick={async () => {
             await handleSignup();

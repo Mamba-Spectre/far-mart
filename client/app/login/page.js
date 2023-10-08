@@ -9,12 +9,14 @@ import "./login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
+  const [loading, setloading] = useState(false);
   const [password, setPassword] = useState("");
   const router = useRouter();
 
   const { setAccessToken } = useAccessToken();
 
   const handleLogin = async () => {
+    setloading(!loading);
     const response = await fetch(
       "https://farmart-be.onrender.com/api/users/login",
       {
@@ -30,12 +32,13 @@ const LoginPage = () => {
       setAccessToken(token);
       router.push("/home");
     }
+    setloading(!loading);
   };
 
   return (
     <div className="container">
       <div className="header">
-        <div className="text">Login In</div>
+        <div className="text">Login</div>
         <div className="underline"></div>
       </div>
       <div className="inputs">
@@ -71,7 +74,7 @@ const LoginPage = () => {
           Login
         </button>
         <button
-          // disabled={!email || !password}
+          disabled={!email || !password || loading}
           className="submit"
           onClick={async () => {
             router.push("/signup");
