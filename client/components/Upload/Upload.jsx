@@ -47,7 +47,8 @@ export default function Upload({ onUploadComplete }) {
   return (
     <>
       <div className="file-card">
-        <p className="header">Upload File</p>
+        <div className="header">Upload File</div>
+        <div className="underline"></div>
         <div className="file-inputs">
           <input className="input" type="file" onChange={handleFileUpload} />
           <button className="button" onClick={handleUpload}>

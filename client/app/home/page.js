@@ -71,9 +71,11 @@ const Home = () => {
         <Upload onUploadComplete={fetchFiles} />
       </div>
       <div className="data">
+        <div className="heading">Your Uploads</div>
+        <div className="underline"></div>
         {files.map((file) => (
-          <div key={file._id}>
-            <span title={file?.Key.slice(8)}>{file?.Key.slice(45)}</span>
+          <div className="container" key={file._id}>
+            <span  className="file_name" title={file?.Key.slice(8)}>{file?.Key.slice(45)}</span>
             <button
               className="button"
               onClick={() => handleDownload(file?._id)}

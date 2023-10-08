@@ -15,8 +15,8 @@
     font-size: 48px;
     font-weight: 700;
     margin-left: 20px;
-  }
-  .file-inputs {
+}
+.file-inputs {
     display: flex;
     flex-direction: column;
     // justify-content: center;
@@ -26,17 +26,25 @@
       margin-top: 10px;
     }
     .button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 220px;
-      height: 59px;
-      color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 220px;
+        height: 59px;
+        color: #fff;
       background: #4c00b4;
       border-radius: 50px;
       font-size: 19px;
       font-weight: 700;
       cursor: pointer;
     }
-  }
 }
+}
+.underline{
+    width: 100px;
+    height: 6px;
+    background: #3c009d;
+    border-radius: 9px;
+    gap: 25px;
+    margin-bottom: 10px;
+  }
