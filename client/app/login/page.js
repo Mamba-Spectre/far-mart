@@ -2,7 +2,9 @@
 import { useState } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
-// import "../assets";
+import user_icon from "../assets/person.png";
+import email_icon from "../assets/email.png";
+import password_icon from "../assets/password.png";
 import "./login.css";
 
 const LoginPage = () => {
@@ -31,22 +33,34 @@ const LoginPage = () => {
   };
 
   return (
-    <div>
-      <h1>Login Page</h1>
-      <div>
-        <input
-          type="text"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+    <div className="container">
+      <div className="header">
+        <div className="text">Login In</div>
+        <div className="underline"></div>
+      </div>
+      <div className="inputs">
+        <div className="input">
+          <img src={email_icon} />
+          <input
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="input">
+          <img src={password} />
+          <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="submit-container">
         <button
+          className="submit"
           onClick={async () => {
             await handleLogin();
           }}
