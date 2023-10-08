@@ -1,6 +1,10 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import user_icon from "../assets/person.png";
+import email_icon from "../assets/email.png";
+import password_icon from "../assets/password.png";
+import "./signup.css";
 const SignupPage = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,33 +27,51 @@ const SignupPage = () => {
     }
   };
   return (
-    <div>
-      <h1>Signup Page</h1>
-      <input
-        type="text"
-        placeholder="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={async () => {
-          await handleSignup();
-        }}
-      >
-        Signup
-      </button>
+    <div className="container">
+      <div className="header">
+        <div className="text">Sign Up</div>
+        <div className="underline"></div>
+      </div>
+      <div className="inputs">
+        <div className="input">
+          <img src={user_icon} />
+          <input
+            type="text"
+            placeholder="name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+        </div>
+        <div className="input">
+          <img src={email_icon} />
+          <input
+            type="text"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="input">
+          <img src={password_icon} />
+          <input
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
+      </div>
+      <div className="submit-container">
+        {/* <div className="submit">Sign Up</div> */}
+        <button
+          className="submit"
+          onClick={async () => {
+            await handleSignup();
+          }}
+        >
+          Signup
+        </button>
+      </div>
     </div>
   );
 };

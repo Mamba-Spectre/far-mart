@@ -2,7 +2,8 @@
 import { useState } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
-import styles from "./login.module.scss";
+// import "../assets";
+import "./login.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -32,7 +33,7 @@ const LoginPage = () => {
   return (
     <div>
       <h1>Login Page</h1>
-      <div className={styles.mainDiv}>
+      <div>
         <input
           type="text"
           placeholder="email"
