@@ -9,15 +9,20 @@ export const useAccessToken = () => {
 
 export const AccessTokenProvider = ({ children }) => {
   const [accessToken, setAccessToken] = useState(() => {
-    const storedToken = localStorage.getItem("accessToken");
-    return storedToken ? storedToken : null;
+    if (typeof window !== "undefined") {
+      const storedToken = localStorage.getItem("accessToken");
+      return storedToken ? storedToken : null;
+    }
+    return null;
   });
 
   useEffect(() => {
-    if (accessToken) {
-      localStorage.setItem("accessToken", accessToken);
-    } else {
-      localStorage.removeItem("accessToken");
+    if (typeof window !== "undefined") {
+      if (accessToken) {
+        localStorage.setItem("accessToken", accessToken);
+      } else {
+        localStorage.removeItem("accessToken");
+      }
     }
   }, [accessToken]);
 
