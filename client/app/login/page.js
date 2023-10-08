@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
+import styles from "./login.module.scss";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -31,25 +32,27 @@ const LoginPage = () => {
   return (
     <div>
       <h1>Login Page</h1>
-      <input
-        type="text"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        onClick={async () => {
-          await handleLogin();
-        }}
-      >
-        Login
-      </button>
+      <div className={styles.mainDiv}>
+        <input
+          type="text"
+          placeholder="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button
+          onClick={async () => {
+            await handleLogin();
+          }}
+        >
+          Login
+        </button>
+      </div>
     </div>
   );
 };
