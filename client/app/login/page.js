@@ -81,7 +81,6 @@ const LoginPage = () => {
           Login
         </button>
         <button
-          disabled={!email || !password || loading}
           className="submit"
           onClick={async () => {
             router.push("/signup");
