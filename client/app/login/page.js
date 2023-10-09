@@ -33,28 +33,31 @@ const LoginPage = () => {
       return;
     }
     setloading(true);
-    const response = await fetch(
-      "https://farmart-be.onrender.com/api/users/login",
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
+    try {
+      const response = await fetch(
+        "https://farmart-be.onrender.com/api/users/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+  
+      if (response.ok) {
+        const { token } = await response.json();
+        setAccessToken(token);
+        router.push("/home");
+      } else {
+        const data = await response.json();
+        setError(data.error);
       }
-    );
-    if (response?.ok) {
-      const { token } = await response.json();
-      setAccessToken(token);
-      router.push("/home");
-    } else {
-      const data = await response.json();
+    } catch (error) {
+      setError("An error occurred while trying to log in.");
+    } finally {
       setloading(false);
-      setError(data.error); // Set error message from response
-      // console.log(data.errors);
-      // setError(data.error); // Set error message from response
     }
-    setloading(false);
   };
 
   return (
