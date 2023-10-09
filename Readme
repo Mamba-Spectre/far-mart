@@ -1,0 +1,7 @@
+Login:- https://far-mart.vercel.app/login
+Signup:- https://far-mart.vercel.app/signup
+Default landing pae is Home is there is no access token it will be redirected to the Login page
+On the login page there is an option for signup which will route to singup page and when the user sings up first time with proper credentials user will be redirected to the login page to login with credentials.
+Then user proper login with right credentials user lands on Home page on which user cacn upload data by selecting which file to upload there currently no filter on what type of file the user wants to upload btuthere is a check on the size of the file.
+After upload the list below updates and shows the name of file user uploaded with three buttons delete(deletes the file from db and s3), share(it copies the url to the clipoard), download(will download the file).
+And when the user loges in later on home page there will be the list of uploads the user uploaded
