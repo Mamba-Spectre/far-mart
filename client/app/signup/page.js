@@ -108,6 +108,14 @@ const SignupPage = () => {
             Signup
           </button>
         )}
+        <button
+          className="submit"
+          onClick={async () => {
+            router.push("/login");
+          }}
+        >
+          Login
+        </button>
       </div>
     </div>
   );
