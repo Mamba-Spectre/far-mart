@@ -3,11 +3,12 @@ import { useState } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
 import user_icon from "../assets/person.png";
-import email_icon from "../assets/email.png";
-import password_icon from "../assets/password.png";
+import email_icon from "../assets/email1.png";
+import password_icon from "../assets/password1.png";
 import "./login.css";
 
 const LoginPage = () => {
+  console.log(">>>>>>", password_icon);
   const [email, setEmail] = useState("");
   const [loading, setloading] = useState(false);
   const [password, setPassword] = useState("");
@@ -50,7 +51,7 @@ const LoginPage = () => {
       </div>
       <div className="inputs">
         <div className="input">
-          <img src={email_icon} />
+          <img src={email_icon.src} />
           <input
             type="text"
             placeholder="email"
@@ -60,7 +61,7 @@ const LoginPage = () => {
           />
         </div>
         <div className="input">
-          <img src={password} />
+          <img src={password_icon.src} />
           <input
             type="password"
             placeholder="password"

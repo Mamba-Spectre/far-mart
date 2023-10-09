@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import user_icon from "../assets/person.png";
-import email_icon from "../assets/email.png";
-import password_icon from "../assets/password.png";
+import user_icon from "../assets/person1.png";
+import email_icon from "../assets/email1.png";
+import password_icon from "../assets/password1.png";
 import "./signup.css";
 const SignupPage = () => {
   const [name, setName] = useState("");
@@ -37,7 +37,7 @@ const SignupPage = () => {
       </div>
       <div className="inputs">
         <div className="input">
-          <img src={user_icon} />
+          <img src={user_icon.src} />
           <input
             type="text"
             placeholder="name"
@@ -46,7 +46,7 @@ const SignupPage = () => {
           />
         </div>
         <div className="input">
-          <img src={email_icon} />
+          <img src={email_icon.src} />
           <input
             type="text"
             placeholder="email"
@@ -56,7 +56,7 @@ const SignupPage = () => {
           />
         </div>
         <div className="input">
-          <img src={password_icon} />
+          <img src={password_icon.src} />
           <input
             type="password"
             placeholder="password"
