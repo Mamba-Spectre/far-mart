@@ -17,9 +17,9 @@ const LoginPage = () => {
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
   }
-  const handleChange = event => {
+  const handleChange = (event) => {
     if (!isValidEmail(event.target.value)) {
-      setError('Email is invalid');
+      setError("Email is invalid");
     } else {
       setError(null);
     }
@@ -49,7 +49,9 @@ const LoginPage = () => {
       router.push("/home");
     } else {
       const data = await response.json();
-      console.log(data.errors);
+      setloading(false);
+      setError(data.error); // Set error message from response
+      // console.log(data.errors);
       // setError(data.error); // Set error message from response
     }
     setloading(false);
@@ -71,7 +73,6 @@ const LoginPage = () => {
             onChange={handleChange}
             required
           />
-          
         </div>
         <div className="input">
           <img src={password_icon.src} />
@@ -85,6 +86,11 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="error-text">{Error}</div>
+      {loading && (
+        <div className="spinner-container">
+          <div className="loading-spinner"></div>
+        </div>
+      )}
       <div className="submit-container">
         {!loading ? (
           <button

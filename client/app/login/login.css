@@ -61,7 +61,7 @@
 .submit-container{
   display: flex;
   gap: 30px;
-  margin: 60px auto;
+  margin: 30px auto;
 }
 .submit{
   display: flex;
@@ -81,6 +81,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
   width: 220px;
   height: 59px;
   color: #fff;
@@ -95,4 +96,21 @@
   color: red;
   font-size: 18px;
   margin-top: 10px;
+}
+@keyframes spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loading-spinner {
+  width: 24px;
+  margin-left: 279px;
+  height: 24px;
+  border: 10px solid #f3f3f3; /* Light grey */
+  border-top: 10px solid #383636; /* Black */
+  border-radius: 50%;
+  animation: spinner 1.5s linear infinite;
 }
