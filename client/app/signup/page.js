@@ -68,15 +68,27 @@ const SignupPage = () => {
       </div>
       <div className="submit-container">
         {/* <div className="submit">Sign Up</div> */}
-        <button
-          disabled={!email || !password || !name || loading}
-          className="submit"
-          onClick={async () => {
-            await handleSignup();
-          }}
-        >
-          Signup
-        </button>
+        {!loading ? (
+          <button
+            disabled={!email || !password || !name || loading}
+            className="submit"
+            onClick={async () => {
+              await handleSignup();
+            }}
+          >
+            Signup
+          </button>
+        ) : (
+          <button
+            disabled={!email || !password || !name || loading}
+            className="submit-faded"
+            onClick={async () => {
+              await handleSignup();
+            }}
+          >
+            Signup
+          </button>
+        )}
       </div>
     </div>
   );

@@ -2,13 +2,11 @@
 import { useState } from "react";
 import { useAccessToken } from "../../hooks/GlobalContext";
 import { useRouter } from "next/navigation";
-import user_icon from "../assets/person.png";
 import email_icon from "../assets/email1.png";
 import password_icon from "../assets/password1.png";
 import "./login.css";
 
 const LoginPage = () => {
-  console.log(">>>>>>", password_icon);
   const [email, setEmail] = useState("");
   const [loading, setloading] = useState(false);
   const [password, setPassword] = useState("");
@@ -21,7 +19,7 @@ const LoginPage = () => {
       setError("Please fill in both email and password fields.");
       return;
     }
-    setloading(!loading);
+    setloading(true);
     const response = await fetch(
       "https://farmart-be.onrender.com/api/users/login",
       {
@@ -40,7 +38,7 @@ const LoginPage = () => {
       const data = await response.json();
       setError(data.error); // Set error message from response
     }
-    setloading(!loading);
+    setloading(false);
   };
 
   return (
@@ -72,15 +70,27 @@ const LoginPage = () => {
         </div>
       </div>
       <div className="submit-container">
-        <button
-          disabled={!email || !password}
-          className="submit"
-          onClick={async () => {
-            await handleLogin();
-          }}
-        >
-          Login
-        </button>
+        {!loading ? (
+          <button
+            disabled={!email || !password}
+            className="submit"
+            onClick={async () => {
+              await handleLogin();
+            }}
+          >
+            Login
+          </button>
+        ) : (
+          <button
+            disabled={!email || !password}
+            className="submit-faded"
+            onClick={async () => {
+              await handleLogin();
+            }}
+          >
+            Login
+          </button>
+        )}
         <button
           className="submit"
           onClick={async () => {
