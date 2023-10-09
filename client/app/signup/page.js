@@ -10,9 +10,27 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setloading] = useState(false);
+  const [Error, setError] = useState(null);
   const router = useRouter();
 
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+
+  const handleChange = (event) => {
+    if (!isValidEmail(event.target.value)) {
+      setError("Email is invalid");
+    } else {
+      setError(null);
+    }
+
+    setEmail(event.target.value);
+  };
   const handleSignup = async () => {
+    if (!email || !password || !name) {
+      setError("Please fill in all fields.");
+      return;
+    }
     setloading(!loading);
     const response = await fetch(
       "https://farmart-be.onrender.com/api/users/register",
@@ -51,7 +69,7 @@ const SignupPage = () => {
             type="text"
             placeholder="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
             required
           />
         </div>
@@ -66,11 +84,12 @@ const SignupPage = () => {
           />
         </div>
       </div>
+      <div className="error-text">{Error}</div>
       <div className="submit-container">
         {/* <div className="submit">Sign Up</div> */}
         {!loading ? (
           <button
-            disabled={!email || !password || !name || loading}
+            // disabled={!email || !password || !name || loading}
             className="submit"
             onClick={async () => {
               await handleSignup();

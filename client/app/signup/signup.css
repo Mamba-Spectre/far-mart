@@ -90,3 +90,11 @@
     font-weight: 700;
     cursor: pointer;
 }
+.error-text{
+    /* align-items: center;
+     */
+     margin-left: 60px;
+     color: red;
+     font-size: 18px;
+     margin-top: 10px;
+  }

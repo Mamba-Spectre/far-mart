@@ -10,9 +10,22 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [loading, setloading] = useState(false);
   const [password, setPassword] = useState("");
+  const [Error, setError] = useState(null);
   const router = useRouter();
 
   const { setAccessToken } = useAccessToken();
+  function isValidEmail(email) {
+    return /\S+@\S+\.\S+/.test(email);
+  }
+  const handleChange = event => {
+    if (!isValidEmail(event.target.value)) {
+      setError('Email is invalid');
+    } else {
+      setError(null);
+    }
+
+    setEmail(event.target.value);
+  };
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -36,7 +49,8 @@ const LoginPage = () => {
       router.push("/home");
     } else {
       const data = await response.json();
-      setError(data.error); // Set error message from response
+      console.log(data.errors);
+      // setError(data.error); // Set error message from response
     }
     setloading(false);
   };
@@ -51,12 +65,13 @@ const LoginPage = () => {
         <div className="input">
           <img src={email_icon.src} />
           <input
-            type="text"
+            type="email"
             placeholder="email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={handleChange}
             required
           />
+          
         </div>
         <div className="input">
           <img src={password_icon.src} />
@@ -69,10 +84,11 @@ const LoginPage = () => {
           />
         </div>
       </div>
+      <div className="error-text">{Error}</div>
       <div className="submit-container">
         {!loading ? (
           <button
-            disabled={!email || !password}
+            // disabled={!email || !password}
             className="submit"
             onClick={async () => {
               await handleLogin();
@@ -82,7 +98,7 @@ const LoginPage = () => {
           </button>
         ) : (
           <button
-            disabled={!email || !password}
+            disabled
             className="submit-faded"
             onClick={async () => {
               await handleLogin();
